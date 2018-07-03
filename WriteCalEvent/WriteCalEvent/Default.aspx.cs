@@ -56,11 +56,11 @@ namespace WriteCalEvent
                 Attendees = GetEventAttendees(),
                 Reminders = new Event.RemindersData()
                 {
-                    UseDefault = true,
-                    //Overrides = new EventReminder[] {
-                    //    new EventReminder() { Method = "email", Minutes = 24 * 60 },
-                    //    new EventReminder() { Method = "sms", Minutes = 10 },
-                    //}
+                    UseDefault = false,
+                    Overrides = new EventReminder[] {
+                        new EventReminder() { Method = "email", Minutes = 24 * 60 },
+                        new EventReminder() { Method = "sms", Minutes = 10 },
+                    }
                 }
             };
 
