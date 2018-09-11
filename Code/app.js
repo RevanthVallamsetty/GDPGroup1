@@ -1,13 +1,21 @@
 const express = require('express')
 const http = require('http')
 const path = require('path')
+const engines = require('consolidate')
 
 const DEFAULT_PORT = 8089
 
 const app = express()
 
+const expressLayouts = require('express-ejs-layouts')
+
+const routes = require('./routes/index.js')
+app.use('/', routes)
+
 // configure app.settings.............................
 app.set('port', process.env.PORT || DEFAULT_PORT)
+
+app.use(expressLayouts)
 
 // set the root view folder
 app.set('views', path.join(__dirname, 'views'))
@@ -22,4 +30,4 @@ app.listen(app.get('port'), () => {
     console.log('  Press CTRL-C to stop\n')
    })
    
-   module.exports = app
+module.exports = app
