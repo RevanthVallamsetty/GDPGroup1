@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="officehoursModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="officehours_Admin_Users">
+          <Key>
+            <PropertyRef Name="Admin_User_Id" />
+          </Key>
+          <Property Name="Admin_User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_Created" Type="datetime" />
+        </EntityType>
+        <EntityType Name="officehours_faculty">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="last_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="account_status" Type="int" />
+          <Property Name="auth_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone_number" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="officehours_messages">
+          <Key>
+            <PropertyRef Name="message_id" />
+          </Key>
+          <Property Name="message_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="faculty_mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="student_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="student_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="message" Type="nvarchar(max)" />
+          <Property Name="Date_Created" Type="datetime" />
+          <Property Name="is_archived" Type="int" />
+        </EntityType>
+        <EntityType Name="officehours_schedule">
+          <Key>
+            <PropertyRef Name="schedule_id" />
+          </Key>
+          <Property Name="schedule_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="faculty_email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="schedule_note" Type="varchar" MaxLength="2000" />
+          <Property Name="schedule_start" Type="datetime" Nullable="false" />
+          <Property Name="schedule_end" Type="datetime" Nullable="false" />
+          <Property Name="schedule_color" Type="varchar" MaxLength="50" />
+          <Property Name="schedule_group" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="officehoursModelStoreContainer">
+          <EntitySet Name="officehours_Admin_Users" EntityType="Self.officehours_Admin_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="officehours_faculty" EntityType="Self.officehours_faculty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="officehours_messages" EntityType="Self.officehours_messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="officehours_schedule" EntityType="Self.officehours_schedule" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="officehoursModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="officehours_Admin_Users">
+          <Key>
+            <PropertyRef Name="Admin_User_Id" />
+          </Key>
+          <Property Name="Admin_User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_Created" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="officehours_faculty">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="account_status" Type="Int32" />
+          <Property Name="auth_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="officehours_schedule">
+          <Key>
+            <PropertyRef Name="schedule_id" />
+          </Key>
+          <Property Name="schedule_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="faculty_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="schedule_note" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="schedule_start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="schedule_end" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="schedule_color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="schedule_group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="officehoursEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="officehours_Admin_Users" EntityType="Self.officehours_Admin_Users" />
+          <EntitySet Name="officehours_faculty" EntityType="Self.officehours_faculty" />
+          <EntitySet Name="officehours_schedule" EntityType="Self.officehours_schedule" />
+          <EntitySet Name="officehours_messages" EntityType="officehoursModel.officehours_messages" />
+        </EntityContainer>
+        <EntityType Name="officehours_messages">
+          <Key>
+            <PropertyRef Name="message_id" />
+          </Key>
+          <Property Name="message_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="faculty_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="student_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="student_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Created" Type="DateTime" Precision="3" />
+          <Property Name="is_archived" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="officehoursModelStoreContainer" CdmEntityContainer="officehoursEntities">
+          <EntitySetMapping Name="officehours_Admin_Users">
+            <EntityTypeMapping TypeName="officehoursModel.officehours_Admin_Users">
+              <MappingFragment StoreEntitySet="officehours_Admin_Users">
+                <ScalarProperty Name="Admin_User_Id" ColumnName="Admin_User_Id" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="officehours_faculty">
+            <EntityTypeMapping TypeName="officehoursModel.officehours_faculty">
+              <MappingFragment StoreEntitySet="officehours_faculty">
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="first_Name" ColumnName="first_Name" />
+                <ScalarProperty Name="last_Name" ColumnName="last_Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="account_status" ColumnName="account_status" />
+                <ScalarProperty Name="auth_code" ColumnName="auth_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="officehours_schedule">
+            <EntityTypeMapping TypeName="officehoursModel.officehours_schedule">
+              <MappingFragment StoreEntitySet="officehours_schedule">
+                <ScalarProperty Name="schedule_group" ColumnName="schedule_group" />
+                <ScalarProperty Name="schedule_id" ColumnName="schedule_id" />
+                <ScalarProperty Name="faculty_email" ColumnName="faculty_email" />
+                <ScalarProperty Name="schedule_note" ColumnName="schedule_note" />
+                <ScalarProperty Name="schedule_start" ColumnName="schedule_start" />
+                <ScalarProperty Name="schedule_end" ColumnName="schedule_end" />
+                <ScalarProperty Name="schedule_color" ColumnName="schedule_color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="officehours_messages">
+            <EntityTypeMapping TypeName="officehoursModel.officehours_messages">
+              <MappingFragment StoreEntitySet="officehours_messages">
+                <ScalarProperty Name="is_archived" ColumnName="is_archived" />
+                <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="student_Name" ColumnName="student_Name" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="faculty_mail" ColumnName="faculty_mail" />
+                <ScalarProperty Name="message_id" ColumnName="message_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
